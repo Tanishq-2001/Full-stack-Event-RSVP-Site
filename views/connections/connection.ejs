@@ -1,0 +1,34 @@
+<%- include('../partials/header.ejs') %>
+
+<main>
+    <div class="container">
+        <div class="text">
+            <div class="event-heading">
+                <h2><%=connection.title %></h2>
+            </div>
+            
+            <div style=" margin-top: 20px;"> <!-- Wrap the form in a new div -->
+                <form>
+                    <h2>RSVP to attend!</h2>
+                    <button name="status" type="submit" formmethod="POST" value="Yes" formaction="/connections/<%= connection._id %>/rsvp">Yes</button>
+                    <button name="status" type="submit" formmethod="POST" value="Maybe" formaction="/connections/<%= connection._id %>/rsvp">Maybe</button>
+                    <button name="status" type="submit" formmethod="POST" value="No" formaction="/connections/<%= connection._id %>/rsvp">No</button>
+                </form>
+            </div>
+            
+            <p><b>Host</b> : <%= connection.hostedBy.firstName + ' ' + connection.hostedBy.lastName %><br>
+            <b>Email </b>: <%= connection.email %><br>
+            <b>Contact Person </b>: <%= connection.contactPerson %><br>   
+            <b>Start Date & Time </b>: <%= connection.startDateTime %><br> 
+            <b>End Date & Time </b>: <%= connection.endDateTime %><br>
+            <b>Location</b>: <%= connection.where %><br>
+            <b>Details</b>: <%= connection.details %><br>
+            <b>Total RSVPs</b>:<%= rsvpCount %> </p>
+        </div>
+        <div class="image">
+            <img src="<%= connection.image %>" alt="main">
+        </div>
+    </div>
+</main>
+
+<%- include('../partials/footer.ejs') %>

@@ -1,0 +1,25 @@
+<%- include('../partials/header.ejs') %>
+
+<main class="list">
+    <div class="event-container">
+        <div class="event">
+            <%= console.log(categories) %>
+            <% for(let i =0; i < categories.length; i++) { %>
+          <h2 class="event-title"><%= categories[i] %></h2>
+          <ul class="event-list">
+            <% if(connections.length) { %>
+            <% connections.forEach(connection => { %>
+            <% if(categories[i] === connection.category) { %>
+            <li class="event-list-item">
+              <span class="event-list-item-text"><a href="connections/<%= connection._id %>" value={this}> <%= connection.title %></a></span>
+            </li>
+            <% } %>
+            <% }) %>
+          </ul>
+          <% } %>
+        <% } %>
+        </div>
+      </div>
+      
+
+<%- include('../partials/footer.ejs') %>

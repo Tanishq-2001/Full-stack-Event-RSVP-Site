@@ -1,0 +1,92 @@
+<%- include('../partials/header.ejs') %>
+
+<main class="entry">
+    <section class="create-connection-form">
+
+        <h2 style="text-align: center;">Create a New Event  </h2>
+        <form action="/connections" enctype="multipart/form-data" method="POST">
+
+<!----------------Category------------------->
+<h5><label >Category</label></h5>
+<select id="category" name="category" required>
+    <option value="" disabled selected>----Select the Category----</option>
+    <option value="Committee Events">Committee Events</option>
+    <option value="Group Events">Group Events</option>
+    <option value="On-Campus Events">On-Campus Events</option>
+    <option value="Off-Campus Events">Off-Campus Events</option>
+    <option value="Festival Meet">Festival Meet</option>
+
+</select>
+
+    <!----------------Title------------------->
+<h5><label for="title">Title</label></h5>
+<input type="text" id="title" name="title" placeholder="Enter the title of your event" required >
+
+    <!----------------HostedBy------------------->
+<!-- 
+<h5><label for="host">Host</label></h5>
+<input type="text" id="hostedBy" name="hostedBy" placeholder="Enter the host of the event " required > -->
+
+<!----------------Location------------------->
+
+<h5><label for="where">Location</label></h5>
+<input type="text" id="where" name="where" placeholder="Enter the location of the event " required >
+
+
+<!----------------Date------------------->
+
+<!-- <h5><label for="date">Date</label></h5>
+<input type="date" id="date" name="date" required > -->
+
+ <!----------------StartTime------------------->
+
+<!-- <h5><label for="time">Start Time</label></h5>
+<input type="time" id="starttime" name="starttime" required > -->
+
+<!----------------EndTime------------------->
+
+<!-- <h5><label for="time">End Time</label></h5>
+<input type="time" id="endtime" name="endtime" required > -->
+
+<!----------------Start Date & Time------------------->
+<h5><label for="startDateTime">Start Date & Time</label></h5>
+<input type="datetime-local" id="startDateTime" name="startDateTime" required>
+
+<!----------------End Date & Time------------------->
+<h5><label for="endDateTime">End Date & Time</label></h5>
+<input type="datetime-local" id="endDateTime" name="endDateTime" required>
+
+ <!----------------Contact------------------->
+
+<h5><label for="contactPerson">Contact Person</label></h5>
+<input type="tel" id="contactPerson" name="contactPerson" required placeholder="Contact number">
+
+     <!----------------E-mail------------------->
+
+<h5><label for="email">E-mail</label></h5>
+<input type="email" id="email" name="email" required placeholder="Enter E-mail address">
+
+    <!----------------Details------------------->
+
+<h5><label for="details">Details</label></h5>
+<input type ="text" id="details" name="details"  rows="4" required placeholder="Enter event details" >
+
+      <!----------------Image------------------->
+<div class="file">
+    <h5><label for="image">Image</label>
+        <input type="file" id="image" name="image" required> 
+        <button type="submit" name = "submit" style="margin-top: 40px;">Create Event </button>
+</div>
+
+
+
+
+</form>
+
+</section>
+
+</main>
+
+
+<%- include('../partials/footer.ejs') %>
+

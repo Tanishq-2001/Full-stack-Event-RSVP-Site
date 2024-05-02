@@ -1,0 +1,57 @@
+<%- include('../partials/header.ejs') %>
+
+<main class="list">
+    <div class="event-container">
+        <div class="event">
+            <h2 class="event-title"><%= user.firstName %>'s Event</h2>
+            <% if (connections.length) { %>
+                <ul class="event-list">
+                    <% connections.forEach(connection => { %>
+                        <li class="event-list-item">
+                            <span class="event-list-item-text"><a href="/connections/<%= connection._id %>"><%= connection.title %></a></span>
+                            <form style="display: inline;">
+                                <button type="submit" formmethod="GET" formaction="/connections/<%= connection._id %>/edit" class="edit-button">
+                                    <i class="fas fa-edit"></i> 
+                                </button>
+                            </form>
+                            <form style="display: inline;">
+                                <button type="submit" formmethod="POST" formaction="/connections/<%= connection._id %>?_method=DELETE" class="delete-button">
+                                    <i class="fas fa-trash-alt"></i> 
+                                </button>
+                            </form>
+                        </li>
+                    <% }); %>
+                </ul>
+            <% } else { %>
+                <p class="no-events-message">No events created yet.</p>
+            <% } %>
+        </div>
+        <div class="event">
+            <h2 class="event-title">Your RSVPs</h2>
+            <% if(rsvps.length){ %>
+                <ul class="event-list">
+                    <% rsvps.forEach(rsvp => { %>
+                        <li class="event-list-item">
+                            <span class="event-list-item-text">
+                                <% if (rsvp.connection) { %>
+                                    <a href="/connections/<%= rsvp.connection._id %>"><%= rsvp.connection.title %></a>
+                                <% } else { %>
+                                    No Connection Available
+                                <% } %>
+                                - <%= rsvp.status %>
+                            </span>
+                            <form style="display: inline;">
+                                <button class="edit-button" type="submit" formmethod="GET" formaction="/connections/<%= rsvp.connection._id %>" class="edit-button"> <i class="fas fa-edit"></i> </button>
+                                <button class="delete-button" type="submit" formmethod="POST" formaction="/connections/rsvp/<%= rsvp._id %>?_method=DELETE" class="delete-button"><i class="fas fa-trash-alt"></i> </button>
+                            </form>
+                        </li>
+                    <% }) %>
+                </ul>
+            <% } else { %>
+                <p class="no-events-message">There are no RSVPs to display.</p>
+            <% } %>
+        </div>
+    </div>
+</main>
+
+<%- include('../partials/footer.ejs') %>
